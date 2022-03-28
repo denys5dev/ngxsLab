@@ -1,0 +1,33 @@
+<ng-container *ngIf="postFacadeService.posts$ | async as posts">
+  <nz-table
+    #columnTable
+    [nzData]="posts"
+    [nzBordered]="true"
+    [nzPageSize]="5"
+    [nzScroll]="{ x: '1100px' }"
+  >
+    <thead>
+      <tr>
+        <th nzWidth="80px" [nzSortOrder]="'descend'" [nzSortFn]="sortFn">Id</th>
+        <th nzWidth="400px" [nzSortFn]="sortFn">Title</th>
+        <th [nzSortFn]="sortFn">Body</th>
+        <th nzWidth="80px">Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr
+        *ngFor="let data of columnTable.data; let i = index"
+        [class.alter]="i % 2 === 0"
+      >
+        <td>{{ data.id }}</td>
+        <td>{{ data.title }}</td>
+        <td>{{ data.body }}</td>
+        <td>
+          <a><i nz-icon nzType="delete" nzTheme="outline"></i></a>
+          <a> <i nz-icon nzType="edit" nzTheme="outline"></i></a>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</ng-container>
