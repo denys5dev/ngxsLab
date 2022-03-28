@@ -34,7 +34,7 @@ registerLocaleData(uk);
     NzMenuModule,
     NgxsModule.forRoot(),
     NgxsDispatchPluginModule.forRoot(),
-    NgxsLoggerPluginModule.forRoot(),
+    NgxsLoggerPluginModule.forRoot({ collapsed: true }),
     NgxsReduxDevtoolsPluginModule.forRoot(),
   ],
   providers: [{ provide: NZ_I18N, useValue: uk_UA }],

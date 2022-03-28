@@ -5,6 +5,7 @@ import {
   ofActionErrored,
   Store,
 } from '@ngxs/store';
+import { switchMap } from 'rxjs';
 import { PostActions } from 'src/app/pages/welcome/+store/post.actions';
 import { PostFacadeService } from 'src/app/pages/welcome/+store/post.facade';
 import { Post } from 'src/app/pages/welcome/models/Post';
@@ -15,6 +16,7 @@ import { Post } from 'src/app/pages/welcome/models/Post';
   styleUrls: ['./welcome.component.css'],
 })
 export class WelcomeComponent implements OnInit {
+  postId: number = 1;
   constructor(
     public postFacadeService: PostFacadeService,
     private action$: Actions,
@@ -35,6 +37,8 @@ export class WelcomeComponent implements OnInit {
 
   ngOnInit() {
     this.postFacadeService.fetchPosts();
+    this.postFacadeService.getPostById(this.postId);
+    this.postFacadeService.getAlbumsByUserId();
 
     // this.store.dispatch(new PostActions.FetchPostsFromStore());
   }

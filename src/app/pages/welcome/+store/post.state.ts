@@ -29,5 +29,28 @@ export class PostState {
       .pipe(map((posts: Post[]) => patchState({ posts })));
   }
 
+  @Action(PostActions.GetPostByIdSuccess)
+  getPostByID(
+    { patchState }: StateContext<PostStateModel>,
+    actions: PostActions.GetPostByIdSuccess
+  ) {
+    patchState({ postById: actions.payload });
+  }
+
+  @Action(PostActions.GetAlbumsByUserIdSuccess)
+  getAlbums(
+    { patchState }: StateContext<PostStateModel>,
+    actions: PostActions.GetAlbumsByUserIdSuccess
+  ) {
+    patchState({ albums: actions.payload });
+  }
+
+  // @Action(PostActions.FetchPostsFromStore)
+  // fetchPostsFromStore({ patchState }: StateContext<PostStateModel>) {
+  //   return this._service
+  //     .getPosts()
+  //     .pipe(map((posts: Post[]) => patchState({ posts })));
+  // }
+
   constructor(private readonly _service: Service) {}
 }

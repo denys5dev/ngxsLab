@@ -7,4 +7,14 @@ export class PostSelectors {
   static getPosts(state: PostStateModel) {
     return state.posts;
   }
+
+  @Selector([PostState])
+  static getPostsById(state: PostStateModel) {
+    return state.postById;
+  }
+
+  @Selector([PostState])
+  static getAlbums(state: PostStateModel) {
+    return state.albums;
+  }
 }
